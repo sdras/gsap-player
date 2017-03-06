@@ -1,6 +1,6 @@
-# gsap-player
+# 📽 GSAP Player 📽
 
-📽 A small, customizable youtube-like player for gsap timelines 📽
+A small, customizable YouTube-like player for GSAP (GreenSock) Timelines 
 
 ## Usage
 

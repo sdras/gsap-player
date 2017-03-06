@@ -1,20 +1,11 @@
-//timeline
-
-var playerTL = new TimelineMax();
-
-playerTL.to(".box", 4, {
-	rotation: 360,
-	x: 400,
-	ease: Bounce.easeInOut
-});
-
-//slider
-
-// (function gsapPlayer(params) {
-//   params       = params          === undefined ? {}     : params;
-//   var bottom   = params.bottom   === undefined ? '40px' : params.bottom,
-//   		playerTL = params.playerTL === undefined ? 'tl'   : params.playerTL,
-//   		color    = params.color    === undefined ? 'dark' : params.color;
+function gsapPlayer(params) {
+	//yeah yeah, I know it's cleaner in ES6 but it's too small a lib to load Babel
+  params        = params           === undefined ? {}             : params;
+  var bottom    = params.bottom    === undefined ? '40px'         : params.bottom,
+  		playerTL  = params.playerTL  === undefined ? tl             : params.playerTL,
+  		container = params.container === undefined ? document.body  : params.container,
+  		fullWidth = params.fullWidth === undefined ? false          : params.fullWidth,
+  		light     = params.light     === undefined ? false          : params.light;
 
 /* todo: 
 x change the tl instances to playerTL
@@ -22,7 +13,7 @@ x create all the html stuff with JS
 - create the color swap
 x set up the repo
 - set up params/lib properly
-- replay switch
+x replay switch
 */
 
 
@@ -63,10 +54,14 @@ x set up the repo
 	var isPlaying = true;
 
 	//gsap player
-	var player = append('div', document.body);
+	var player = append('div', container); //this is being set on the body through params but is configurable
+	var playerWidth, playerMargin, playerColor;
+	fullWidth ? playerWidth  = '99%'  : playerWidth  = '80%';
+	fullWidth ? playerMargin = '0'    : playerMargin = '0 10%';
+	light     ? playerColor  = 'white': playerColor  = 'black';
   setAttributes(player, {
     'id'   : 'gsap-player',
-    'style': 'bottom: 40px; background: black', //to do, set the params
+    'style': 'bottom: ' + bottom + '; background: ' + playerColor + '; width: ' + playerWidth + '; margin: ' + playerMargin,
   });
 
   //playpause button
@@ -196,6 +191,16 @@ x set up the repo
 		})
 		playerTL.progress(0);
 		playerTL.restart();
+
+		if (!isPlaying) {
+			TweenMax.to(play, 0.1, {
+				opacity: 0
+			});
+			TweenMax.to(pause, 0.1, {
+				opacity: 1
+			});
+			isPlaying = true;
+		}
 	});
 
 	playpause.addEventListener('click', function() {
@@ -226,5 +231,4 @@ x set up the repo
 		}
 	});
 
-
-// })();
+};

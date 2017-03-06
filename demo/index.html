@@ -1,199 +1,64 @@
 <!doctype html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<style>
-	#gsap-player input[type=range] {
-	  -webkit-appearance: none;
-	  width: 100%;
-	  margin: 5px 0;
-	}
-	#gsap-player input[type=range]:focus {
-	  outline: none;
-	}
-	#gsap-player input[type=range]::-webkit-slider-runnable-track {
-	  width: 100%;
-	  height: 9px;
-	  cursor: pointer;
-	  background: #7e7e7e;
-	  border-radius: 1px;
-	}
-	#gsap-player input[type=range]::-webkit-slider-thumb {
-	  box-shadow: 0.6px 0.6px 2.1px rgba(0, 0, 0, 0.15), 0px 0px 0.6px rgba(13, 13, 13, 0.15);
-	  border: 1px solid #bbb;
-	  height: 18px;
-	  width: 19px;
-	  border-radius: 100px;
-	  background: #7e7e7e;
-	  cursor: pointer;
-	  -webkit-appearance: none;
-	  margin-top: -5.6px;
-	}
-	#gsap-player input[type=range]:focus::-webkit-slider-runnable-track {
-	  background: #8b8b8b;
-	}
-	#gsap-player input[type=range]::-moz-range-track {
-	  width: 100%;
-	  height: 9px;
-	  cursor: pointer;
-	  background: #7e7e7e;
-	  border-radius: 1px;
-	}
-	#gsap-player input[type=range]::-moz-range-thumb {
-	  box-shadow: 0.6px 0.6px 2.1px rgba(0, 0, 0, 0.15), 0px 0px 0.6px rgba(13, 13, 13, 0.15);
-	  border: 1px solid #a0a0a0;
-	  height: 18px;
-	  width: 19px;
-	  border-radius: 100px;
-	  background: #7e7e7e;
-	  cursor: pointer;
-	}
-	#gsap-player input[type=range]::-ms-track {
-	  width: 100%;
-	  height: 9px;
-	  cursor: pointer;
-	  background: transparent;
-	  border-color: transparent;
-	  color: transparent;
-	}
-	#gsap-player input[type=range]::-ms-fill-lower {
-	  background: #717171;
-	  border: 1.1px solid #6e6e6e;
-	  border-radius: 2px;
-	  box-shadow: 0.9px 0.9px 1.7px rgba(0, 0, 0, 0), 0px 0px 0.9px rgba(13, 13, 13, 0);
-	}
-	#gsap-player input[type=range]::-ms-fill-upper {
-	  background: #7e7e7e;
-	  border: 1.1px solid #6e6e6e;
-	  border-radius: 2px;
-	  box-shadow: 0.9px 0.9px 1.7px rgba(0, 0, 0, 0), 0px 0px 0.9px rgba(13, 13, 13, 0);
-	}
-	#gsap-player input[type=range]::-ms-thumb {
-	  box-shadow: 0.6px 0.6px 2.1px rgba(0, 0, 0, 0.15), 0px 0px 0.6px rgba(13, 13, 13, 0.15);
-	  border: 1px solid #a0a0a0;
-	  height: 18px;
-	  width: 19px;
-	  border-radius: 100px;
-	  background: #7e7e7e;
-	  cursor: pointer;
-	  height: 9px;
-	}
-	#gsap-player input[type=range]:focus::-ms-fill-lower {
-	  background: #7e7e7e;
-	}
-	#gsap-player input[type=range]:focus::-ms-fill-upper {
-	  background: #8b8b8b;
-	}
+  <title>GSAP Player Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../src/gsap-player.css">
+  <style>
+  /* demo-specific styles */
 
-	/* player */
-	#gsap-player button {
-		background: none;
-		border: none;
-		outline: 0;
-		cursor: pointer;
-	}
-	#gsap-player button svg path {
-		fill: #ddd;
-		transition: 0.2s fill ease-in;
-		-webkit-transition: 0.2s fill ease-in;
-	}
-	#gsap-player button:hover svg path {
-		fill: white;
-		transition: 0.2s fill ease-out;
-		-webkit-transition: 0.2s fill ease-out;
-	}
-	#gsap-player .loop {
-		margin: 0 0 0 10px;
-	}
-	#gsap-player {
-		position: absolute;
-		bottom: 40px;
-		background: black;
-		display: flex;
-		align-items: center;
-		padding: 10px;
-		width: 80%;
-		margin: 0 10%;
-		opacity: 0.8;
-	}
-	#gsap-player .playpause {
-		position: relative;
-		margin: 0 0 0 10px;
-	}
-	#gsap-player .playpause svg {
-		position: absolute;
-		top: -5px;
-		left: -5px;
-	}
-	#gsap-player .playpause .play {
-		opacity: 0;
-	}
-	#gsap-player button, #gsap-player input {
-		opacity: 0.8;
-		transition: 0.2s opacity ease-in;
-		-webkit-transition: 0.2s opacity ease-in;
-	}
-	#gsap-player:hover button, #gsap-player:hover input {
-		opacity: 1;
-		transition: 0.2s opacity ease-out;
-		-webkit-transition: 0.2s opacity ease-out;
-	}
-	#gsap-player .speed-tooltip {
-		display: flex;
-		background: black;
-		color: white;
-		flex-direction: column;
-		font-size: 10px;
-		font-family: helvetica, sans-serif;
-		opacity: 0;
-		visibility: hidden;
-		position: absolute;
-		top: -60px;
-		left: 32px;
-		padding-top: 5px;
-	}
-	#gsap-player .speed-tooltip div {
-		margin: 2px 10px;
-		opacity: 0.7;
-		transition: 0.2s opacity ease-in;
-		-webkit-transition: 0.2s opacity ease-in;
-		cursor: pointer;
-	}
-	#gsap-player .speed-tooltip div:hover {
-		opacity: 1;
-		transition: 0.2s opacity ease-out;
-		-webkit-transition: 0.2s opacity ease-out;
-	}
-	#gsap-player .speed {
-		color: white;
-		margin: 0 10px 0 5px;
-	}
+  /* you need this to make the full-width work appropriately */
+  body {
+  	margin: 0;
+  	padding: 0;
+  	background: #222;
+  }
 
-	/* demo code */
+  #container {
+    margin-top: 100px;
+    min-height: 200px;
+  }
+  .box {
+    border-radius: 4px;
+    background: teal;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 40%;
+  }
+  </style>
 
-	#container {
-		margin-top: 100px;
-		min-height: 200px;
-	}
-	.box {
-		border-radius: 4px;
-		background: teal;
-		width: 60px;
-		height: 60px;
-		position: absolute;
-		left: 40%;
-	}
-</style>
-<body>
+  <body>
 
-<!--demo-->
+    <!--demo specific code-->
+    <div id="container">
+      <div class="box"></div>
+    </div>
 
-<div id="container">
-	<div class="box"></div>
-</div>
+		<script src="https://unpkg.com/gsap"></script>
+		<script type="text/javascript">
+    //replace with your own animation
 
-<script src="https://unpkg.com/gsap"></script>
-<script src="../src/gsap-player.js"></script>
+		var tl = new TimelineMax();
 
-</body>
+		tl.to(".box", 4, {
+			rotation: 360,
+			x: 400,
+			ease: Bounce.easeInOut
+		});
+
+    </script>
+    <!--end demo specific-->
+
+    <script src="../src/gsap-player.js"></script>
+    <script type="text/javascript">
+    	gsapPlayer({
+    		playerTL: tl,
+    		light: true
+    	});
+    </script>
+  </body>
+
 </html>
