@@ -2,7 +2,7 @@
 
 A small, customizable YouTube-like player for GSAP (GreenSock) Timelines 
 
-Project Demo Page: [http://codepen.io/sdras/full/YNpaoJ](http://codepen.io/sdras/full/YNpaoJ)
+Project Demo Page: [http://s.codepen.io/sdras/debug/Mpjxxq/](http://s.codepen.io/sdras/debug/Mpjxxq/)
 
 ![GSAP Player](https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/gsap-preview.png "Such a player")
 
