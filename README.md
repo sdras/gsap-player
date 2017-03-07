@@ -4,7 +4,40 @@ A small, customizable YouTube-like player for GSAP (GreenSock) Timelines
 
 ## Usage
 
+The simplest possible use is loading the gsap-player.css in the head and the gsap-player.js before the closing body tag and implementing:
 
+```gsap-player({ playerTL: master });```
+
+This will append the player to document.body. The default timeline name is `tl`, if you're using tl, you only need to call `gsap-player();`
+
+## Configurations
+
+### Light Theme
+
+GSAP Player will default to a dark theme, but you can also configure a light theme:
+
+```gsap-player({ light: true });```
+
+### Position
+
+By default, the GSAP player will be 80% wide and 40px from the bottom of the viewport. You can configure it to be full-width or flush to the bottom, or slightly higher or lower. Bottom must be in a string.
+
+```
+gsap-player({
+  fullWidth: true,
+  bottom: '0'
+});
+```
+
+If you use full-width and keep the container defaulted to document.body, you should be sure that you've either used a reset or placed `margin: 0 ` on the body due to strange browser defaults.
+
+### Container
+
+By default, the player is instantiated on the body, but if you'd like to change the parent, you can do:
+
+```gsap-player({ container: '#foo' });```
+
+You'll need to put position: relative on that containing element to enclose the player spacially in that div. Just a heads up: this won't put the animation in the container as well (the configuration is kept separate for flexibility. 
 
 ## License
 

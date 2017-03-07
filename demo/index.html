@@ -11,9 +11,9 @@
 
   /* you need this to make the full-width work appropriately */
   body {
-  	margin: 0;
-  	padding: 0;
-  	background: #222;
+    margin: 0;
+    padding: 0;
+    background: #222;
   }
 
   #container {
@@ -37,26 +37,24 @@
       <div class="box"></div>
     </div>
 
-		<script src="https://unpkg.com/gsap"></script>
-		<script type="text/javascript">
+    <script src="https://unpkg.com/gsap"></script>
+    <script type="text/javascript">
     //replace with your own animation
 
-		var tl = new TimelineMax();
+    var tl = new TimelineMax();
 
-		tl.to(".box", 4, {
-			rotation: 360,
-			x: 400,
-			ease: Bounce.easeInOut
-		});
+    tl.to(".box", 4, {
+      rotation: 360,
+      x: 400,
+      ease: Bounce.easeInOut
+    });
 
     </script>
     <!--end demo specific-->
 
     <script src="../src/gsap-player.js"></script>
     <script type="text/javascript">
-    	gsapPlayer({
-    		playerTL: tl,
-    	});
+      gsapPlayer();
     </script>
   </body>
 
