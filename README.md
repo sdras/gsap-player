@@ -8,7 +8,7 @@ Project Demo Page: [http://s.codepen.io/sdras/debug/Mpjxxq/](http://s.codepen.io
 
 ## Usage
 
-The simplest possible use is loading the gsap-player.css in the head and the gsap-player.js before the closing body tag and implementing:
+The simplest possible use is loading gsap-player.js before the closing body tag (you do not need the CSS file) and implementing:
 
 ```gsapPlayer({ playerTL: yourtimelinehere });```
 
