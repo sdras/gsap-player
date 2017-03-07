@@ -18,6 +18,8 @@ This will append the player to document.body. The default timeline name is `tl`,
 
 ### Light Theme
 
+![Light Theme](https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/Screen%20Shot%202017-03-06%20at%2011.22.30%20PM.png "Light Theme")
+
 GSAP Player will default to a dark theme, but you can also configure a light theme:
 
 ```gsap-player({ light: true });```
