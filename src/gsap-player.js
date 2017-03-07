@@ -86,7 +86,7 @@ function gsapPlayer(params) {
       speed.innerHTML = '1x';
   setAttributes(speed, {
       'class': 'speed',
-      'style': 'color: ' + iconColor + 'font-size: 12px',
+      'style': 'color: ' + iconColor + '; font-size: 12px',
   });
 
   //speed tooltip
