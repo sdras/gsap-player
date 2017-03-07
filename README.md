@@ -2,11 +2,15 @@
 
 A small, customizable YouTube-like player for GSAP (GreenSock) Timelines 
 
+Project Demo Page: [http://codepen.io/sdras/full/YNpaoJ](http://codepen.io/sdras/full/YNpaoJ)
+
+![GSAP Player](https://s3-us-west-2.amazonaws.com/s.cdpn.io/28963/gsap-preview.png "Such a player")
+
 ## Usage
 
 The simplest possible use is loading the gsap-player.css in the head and the gsap-player.js before the closing body tag and implementing:
 
-```gsap-player({ playerTL: master });```
+```gsap-player({ playerTL: yourtimelinehere });```
 
 This will append the player to document.body. The default timeline name is `tl`, if you're using tl, you only need to call `gsap-player();`
 

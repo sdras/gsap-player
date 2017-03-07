@@ -1,5 +1,5 @@
 function gsapPlayer(params) {
-  "use strict";
+  'use strict';
 
   params        = params           === undefined ? {}             : params;
   var bottom    = params.bottom    === undefined ? '40px'         : params.bottom,
@@ -86,7 +86,7 @@ function gsapPlayer(params) {
       speed.innerHTML = '1x';
   setAttributes(speed, {
       'class': 'speed',
-      'style': 'color: ' + iconColor,
+      'style': 'color: ' + iconColor + 'font-size: 12px',
   });
 
   //speed tooltip
