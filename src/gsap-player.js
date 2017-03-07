@@ -1,21 +1,12 @@
 function gsapPlayer(params) {
-	//yeah yeah, I know it's cleaner in ES6 but it's too small a lib to load Babel
+	"use strict";
+
   params        = params           === undefined ? {}             : params;
   var bottom    = params.bottom    === undefined ? '40px'         : params.bottom,
   		playerTL  = params.playerTL  === undefined ? tl             : params.playerTL,
   		container = params.container === undefined ? document.body  : params.container,
   		fullWidth = params.fullWidth === undefined ? false          : params.fullWidth,
   		light     = params.light     === undefined ? false          : params.light;
-
-/* todo: 
-x change the tl instances to playerTL
-x create all the html stuff with JS
-- create the color swap
-x set up the repo
-- set up params/lib properly
-x replay switch
-*/
-
 
 	/*------------------------------------------
 	           helper functions
@@ -51,14 +42,17 @@ x replay switch
 	           Create the elements
 	-------------------------------------------*/
 
-	var isPlaying = true;
-
-	//gsap player
-	var player = append('div', container); //this is being set on the body through params but is configurable
-	var playerWidth, playerMargin, playerColor;
+	var isPlaying = true,
+			playerWidth, playerMargin, playerColor, iconColor;
 	fullWidth ? playerWidth  = '99%'  : playerWidth  = '80%';
 	fullWidth ? playerMargin = '0'    : playerMargin = '0 10%';
 	light     ? playerColor  = 'white': playerColor  = 'black';
+	light     ? iconColor  	 = '#333' : iconColor  = '#ddd';
+
+	console.log(iconColor);
+
+	//gsap player
+	var player = append('div', container); //this is being set on the body through params but is configurable
   setAttributes(player, {
     'id'   : 'gsap-player',
     'style': 'bottom: ' + bottom + '; background: ' + playerColor + '; width: ' + playerWidth + '; margin: ' + playerMargin,
@@ -67,7 +61,7 @@ x replay switch
   //playpause button
 	var playpause = append('button', player);
   setAttributes(playpause, {
-    'class': 'playpause',
+      'class': 'playpause',
   });
 
   //play svg
@@ -76,7 +70,7 @@ x replay switch
     'width' : '15px',
     'height': '15px',
     'class' : 'play', 
-    'fill'  : '#ddd', //to do, set the params
+    'fill'  :  iconColor, 
   });
 
   //pause svg
@@ -85,14 +79,15 @@ x replay switch
     'width' : '15px',
     'height': '15px',
     'class' : 'pause', 
-    'fill'  : '#ddd', //to do, set the params
+    'fill'  :  iconColor, 
   });
 
   //speed button
 	var speed = append('button', player);
 			speed.innerHTML = '1x';
   setAttributes(speed, {
-    'class': 'speed',
+      'class': 'speed',
+      'style': 'color: ' + iconColor,
   });
 
 	//speed tooltip
@@ -101,11 +96,15 @@ x replay switch
 	var half  	 = append('div', sTooltip);
 	var full     = append('div', sTooltip);
 	var double   = append('div', sTooltip);
-	sTooltip.setAttribute('class', 'speed-tooltip');
 	tenth.innerHTML  = '0.1x';
 	half.innerHTML   = '0.5x';
 	full.innerHTML   = '1x';
 	double.innerHTML = '2x';
+	setAttributes(sTooltip, {
+    'class' : 'speed-tooltip',
+    'style' : 'background: ' + playerColor + '; color: ' + iconColor, 
+  });
+
 
 	//range input
 	var slider = append('input', player);
@@ -125,7 +124,7 @@ x replay switch
   setAttributes(loopSVG, {
     'width' : '15px',
     'height': '15px',
-    'fill'  : '#ddd', //to do, set the params
+    'fill'  :  iconColor, 
   });
 
 	/*------------------------------------------

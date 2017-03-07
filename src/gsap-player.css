@@ -87,16 +87,6 @@
 	outline: 0;
 	cursor: pointer;
 }
-#gsap-player button svg path {
-	fill: #ddd;
-	transition: 0.2s fill ease-in;
-	-webkit-transition: 0.2s fill ease-in;
-}
-#gsap-player button:hover svg path {
-	fill: white;
-	transition: 0.2s fill ease-out;
-	-webkit-transition: 0.2s fill ease-out;
-}
 #gsap-player .loop {
 	margin: 0 0 0 10px;
 }
@@ -135,8 +125,6 @@
 }
 #gsap-player .speed-tooltip {
 	display: flex;
-	background: black;
-	color: white;
 	flex-direction: column;
 	font-size: 10px;
 	font-family: helvetica, sans-serif;
