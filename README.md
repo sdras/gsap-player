@@ -10,7 +10,9 @@ Project Demo Page: [http://s.codepen.io/sdras/debug/Mpjxxq/](http://s.codepen.io
 
 The simplest possible use is loading gsap-player.js before the closing body tag (you do not need the CSS file) and implementing:
 
-```gsapPlayer({ playerTL: yourtimelinehere });```
+```js
+gsapPlayer({ playerTL: yourtimelinehere });
+```
 
 This will append the player to document.body. The default timeline name is `tl`, if you're using tl, you only need to call `gsapPlayer();`
 
@@ -22,13 +24,15 @@ This will append the player to document.body. The default timeline name is `tl`,
 
 GSAP Player will default to a dark theme, but you can also configure a light theme:
 
-```gsapPlayer({ light: true });```
+```js
+gsapPlayer({ light: true });
+```
 
 ### Position
 
 By default, the GSAP player will be 80% wide and 40px from the bottom of the viewport. You can configure it to be full-width or flush to the bottom, or slightly higher or lower. Bottom must be in a string.
 
-```
+```js
 gsapPlayer({
   fullWidth: true,
   bottom: '0'
@@ -41,7 +45,9 @@ If you use full-width and keep the container defaulted to document.body, you sho
 
 By default, the player is instantiated on the body, but if you'd like to change the parent, you can do:
 
-```gsapPlayer({ container: '#foo' });```
+```js
+gsapPlayer({ container: '#foo' });
+```
 
 You'll need to put position: relative on that containing element to enclose the player spacially in that div. Just a heads up: this won't put the animation in the container as well (the configuration is kept separate for flexibility. 
 
